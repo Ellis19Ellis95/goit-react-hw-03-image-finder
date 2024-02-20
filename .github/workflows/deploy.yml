@@ -17,8 +17,11 @@ jobs:
           npm run lint:js
           npm run build
 
+      - name: Set Output for GitHub Pages 📦
+        run: echo "gh-pages=build" >> $GITHUB_ENV
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: build
+          folder: ${{ env.gh-pages }}
